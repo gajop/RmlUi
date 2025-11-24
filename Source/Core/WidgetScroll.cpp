@@ -70,6 +70,15 @@ WidgetScroll::WidgetScroll(Element* _parent)
 
 WidgetScroll::~WidgetScroll()
 {
+	// Don't try to remove event listeners if the context is being torn down.
+	// In that case, all elements (including bar, track, arrows) are being destroyed
+	// and their EventDispatchers may already be freed.
+	if (parent == nullptr)
+		return;
+
+	if (parent->GetContext() == nullptr)
+		return;
+
 	if (bar != nullptr)
 	{
 		bar->RemoveEventListener(EventId::Drag, this);
