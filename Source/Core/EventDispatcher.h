@@ -44,6 +44,7 @@ public:
 	/// @param[in] event_listener The event listener to be notified when the event fires
 	/// @param[in] in_capture_phase Should the listener be notified in the capture phase
 	void DetachEvent(EventId id, EventListener* listener, bool in_capture_phase);
+	void DetachEvent(EventListener* listener);
 
 	/// Detaches all events from this dispatcher and all child dispatchers.
 	void DetachAllEvents();

@@ -549,6 +549,11 @@ void Factory::RegisterEventListenerInstancer(EventListenerInstancer* instancer)
 	event_listener_instancer = instancer;
 }
 
+EventListenerInstancer* Factory::GetEventListenerInstancer()
+{
+	return event_listener_instancer;
+}
+
 EventListener* Factory::InstanceEventListener(const String& value, Element* element)
 {
 	// If we have an event listener instancer, use it

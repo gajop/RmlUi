@@ -150,6 +150,7 @@ public:
 	/// Register the instancer to be used for all event listeners, or nullptr to clear an existing instancer.
 	/// @lifetime The instancer must be kept alive until after the call to Rml::Shutdown, or until a new instancer is set.
 	static void RegisterEventListenerInstancer(EventListenerInstancer* instancer);
+	static EventListenerInstancer* GetEventListenerInstancer();
 	/// Instance an event listener with the given string. This is used for instancing listeners for the on* events from RML.
 	/// @param[in] value The parameters to the event listener.
 	/// @param[in] element The element that initiates the call to the instancer.

@@ -61,6 +61,25 @@ void EventDispatcher::DetachEvent(const EventId id, EventListener* listener, con
 	}
 }
 
+void EventDispatcher::DetachEvent(EventListener* listener)
+{
+	bool detached = false;
+	for (auto it = listeners.begin(); it != listeners.end(); )
+	{
+		if (it->listener != listener)
+		{
+			++it;
+			continue;
+		}
+
+		it = listeners.erase(it);
+		detached = true;
+	}
+
+	if (detached)
+		listener->OnDetach(element);
+}
+
 void EventDispatcher::DetachAllEvents()
 {
 	for (const auto& event : listeners)

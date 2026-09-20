@@ -477,6 +477,7 @@ public:
 	void RemoveEventListener(const String& event, EventListener* listener, bool in_capture_phase = false);
 	/// Removes an event listener from this element by id.
 	void RemoveEventListener(EventId id, EventListener* listener, bool in_capture_phase = false);
+	void RemoveEventListener(EventListener* listener);
 	/// Sends an event to this element.
 	/// @param[in] type Event type in string form.
 	/// @param[in] parameters The event parameters.
@@ -578,6 +579,8 @@ public:
 	/// Sets the instancer to use for releasing this element.
 	/// @param[in] instancer Instancer to set on this element.
 	void SetInstancer(ElementInstancer* instancer);
+	ElementInstancer* GetInstancer() const { return instancer; }
+	void ReplaceInstancer(ElementInstancer* instancer);
 
 	/// Called when an emitted event propagates to this element, for event types with default actions.
 	/// Note: See 'EventSpecification' for the events that call this function and during which phase.

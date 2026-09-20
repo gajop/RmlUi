@@ -1214,6 +1214,11 @@ void Element::RemoveEventListener(EventId id, EventListener* listener, bool in_c
 	meta->event_dispatcher.DetachEvent(id, listener, in_capture_phase);
 }
 
+void Element::RemoveEventListener(EventListener* listener)
+{
+	meta->event_dispatcher.DetachEvent(listener);
+}
+
 bool Element::DispatchEvent(const String& type, const Dictionary& parameters)
 {
 	const EventSpecification& specification = EventSpecificationInterface::GetOrInsert(type);
@@ -1637,6 +1642,11 @@ void Element::SetInstancer(ElementInstancer* _instancer)
 	{
 		instancer = _instancer;
 	}
+}
+
+void Element::ReplaceInstancer(ElementInstancer* _instancer)
+{
+	instancer = _instancer;
 }
 
 void Element::ForceLocalStackingContext()
